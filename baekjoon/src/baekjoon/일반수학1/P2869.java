@@ -12,13 +12,11 @@ public class P2869 {
 		int a = Integer.parseInt(st.nextToken()); // 낮
 		int b = Integer.parseInt(st.nextToken()); // 밤
 		int v = Integer.parseInt(st.nextToken()); // 높이
-		int day = 1;
-		if(v % (a - b) == 0) {
-			v = v - a;
-			day += (v - (a-b) + 1);
-		} else {
-			day += v / a;
-		}
-		System.out.println(day);
+		v = v - b;
+		if(v % (a - b) == 0)
+			System.out.println(v / (a-b));
+		else
+			System.out.println(v / (a-b) + 1);
 	}
 }
+
