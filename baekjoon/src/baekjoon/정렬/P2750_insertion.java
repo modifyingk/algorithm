@@ -32,10 +32,4 @@ public class P2750_insertion {
 			System.out.println(arr[i]);
 		}
 	}
-	
-	public static void swap(int a, int b) {
-		int tmp = arr[a];
-		arr[a] = arr[b];
-		arr[b] = tmp;
-	}
 }
