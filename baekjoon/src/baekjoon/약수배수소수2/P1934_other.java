@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class P1934_timeover2 {
+public class P1934_other {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -17,21 +17,20 @@ public class P1934_timeover2 {
 			st = new StringTokenizer(br.readLine());
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
-			int result = calc(a, b);
+			int result = (a * b / gcd(a, b));
 			bw.append(result + "\n");
 		}
 		bw.flush();
 		bw.close();
 	}
 
-	private static int calc(int a, int b) {
-		int result = a * b;
-		for(int i = 2; i <= result; i++) {
-			if(a % i == 0 && b % i == 0) {
-				int tmp = i * (a / i) * (b / i);
-				result = Math.min(result, tmp);
-			}
+	// 최대공약수 구하기
+	private static int gcd(int a, int b) {
+		while(b != 0) {
+			int r = a % b;
+			a = b;
+			b = r;
 		}
-		return result;
+		return a;
 	}
 }
