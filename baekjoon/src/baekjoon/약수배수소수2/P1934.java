@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class P1934_timeover {
+public class P1934 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -24,30 +24,17 @@ public class P1934_timeover {
 		bw.close();
 	}
 
+	// 최소공배수 구하기
 	private static int calc(int a, int b) {
-		int max = a * b;
-		int arr1[] = new int[max / a];
-		int arr2[] = new int[max / b];
+		int result = 0;
 		int i = 1;
-		while(i <= arr1.length || i <= arr2.length) {
-			if(i <= arr1.length)
-				arr1[i - 1] = a * i;
-			if(i <= arr2.length)
-				arr2[i - 1] = b * i;
+		while(Math.max(a, b) * i <= a * b) {
+			if((Math.max(a, b) * i) % Math.min(a, b) == 0) {
+				result = Math.max(a, b) * i;
+				break;
+			}
 			i++;
 		}
-		boolean chk = false;
-		for(int j = 0; j < arr1.length; j++) {
-			for(int k = 0; k < arr2.length; k++) {
-				if(arr1[j] == arr2[k]) {
-					max = arr1[j];
-					chk = true;
-					break;
-				}
-			}
-			if(chk)
-				break;
-		}
-		return max;
+		return result;
 	}
 }
