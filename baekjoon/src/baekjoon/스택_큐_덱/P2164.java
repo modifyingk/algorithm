@@ -16,11 +16,7 @@ public class P2164 {
 		}
 		while(queue.size() > 1) {
 			queue.poll(); // top 버리기
-			
-			if(queue.size() == 1)
-				break;
-			int top = queue.peek(); // top 제일 아래로
-			queue.poll();
+			int top = queue.poll();
 			queue.add(top);
 		}
 		System.out.println(queue.peek());
